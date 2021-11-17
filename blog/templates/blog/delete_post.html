@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+		
+		    Blog Acheampong Inc.
+		{% endblock  %}
+
+
+		{% block content%}
+
+        {% if user.is_authenticated %}
+        {% if user.id == post.author.id %}
+    <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Blog</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="breadcrumb-item active">Blog</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+
+
+    
+    <!-- Start Blog  -->
+    <div class="latest-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>Delete Blog</h1>
+                        <p>You can Add a Delete Blog Post</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                
+                <div class="col-md-12 col-lg-12 col-xl-12">
+                    
+                    <div class="blog-box">
+                        
+                        <div class="blog-content">
+                            <div class="title-blog">
+                                <h1><strong> Delete: {{ post.title }}</strong></h1>
+                                <form method="POST" >
+                                    {% csrf_token %}
+                                    
+                                    <br>
+                                    <br>
+                                    <h1>Are You Sure you want to delete this Post</h1>
+                                    <button class="btn hvr-hover">Delete Post</button>
+                                </form>
+                                <hr>
+                                <div class="media-body text-center">
+                                    <a class="btn hvr-hover" href="{% url 'blog' %}"><strong>Return To Blog</strong> </a>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- End Blog  -->
+    
+{% else %}
+<div class="latest-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>You do not have permission for this</h1>
+                    <div class="price-box-bar">
+                        <div class="cart-and-bay-btn">
+                            <a class="btn hvr-hover" data-fancybox-close="" href=" {% url 'blog' %} ">Please Return to Blog</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% else %}
+<div class="latest-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>You are not login</h1>
+                    <p>Please Login or Register</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+    <!-- End Blog  -->
+
+
+
+
+    
+
+
+
+    
+        {% endblock  %}
+
+

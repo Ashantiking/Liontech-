@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+		
+		    Blog Acheampong Inc.
+		{% endblock  %}
+
+
+		{% block content%}
+
+        {% if user.is_authenticated %}
+    <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Blog</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'blog' %}">Blog</a></li>
+                        <li class="breadcrumb-item active">Add A Blog</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+
+
+    
+    <!-- Start Blog  -->
+    <div class="latest-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>Adding Blog</h1>
+                        <p>You can Add a Blog Post</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                
+                <div class="col-md-12 col-lg-12 col-xl-12">
+                    
+                    <div class="blog-box">
+                        
+                        <div class="blog-content">
+                            <div class="title-blog">
+                                <form method="POST" >
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <br>
+                                    <br>
+                                    <button class="btn hvr-hover">Add Post</button>
+                                </form>
+                                <hr>
+                            </div>
+                            <script>
+                                var name = "{{ user.id }} ";
+                                document.getElementById("liven").value = name;
+                            </script> 
+                        </div>
+                        <div class="media-body ">
+                            <a class="btn hvr-hover" href="{% url 'add_category' %}">Add Categories</a>
+                       
+                        <div class="media-body text-center">
+                            <a class="btn hvr-hover" href="{% url 'blog' %}">Return To Blog</a>
+                        </div>
+                    </div> 
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- End Blog  -->
+
+    {% else %}
+    <div class="latest-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>You are not login</h1>
+                        <p>Please Login or Register</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endif %}
+
+    
+
+
+
+    
+        {% endblock  %}
+
+

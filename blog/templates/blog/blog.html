@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+		
+		    Blog Acheampong Inc.
+		{% endblock  %}
+
+
+		{% block content%}
+
+    
+    <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Blog</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="breadcrumb-item active">Blog</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+
+
+    
+    <!-- Start Blog  -->
+    <div class="latest-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>Latest Blog</h1>
+                        <p>Our Latest Blog Post</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                {% for post in object_list %}
+                <div class="col-md-6 col-lg-4 col-xl-4">
+                    
+                    <div class="blog-box">
+                        <div class="blog-img">
+                            <img class="img-fluid" src="{{ post.image_url }}" alt="" />
+                        </div>
+                        <div class="blog-content">
+                            <div class="title-blog">
+                                <h3><a href="{% url 'article-detail' post.pk %} ">{{ post.title }}</a></h3>
+                                
+                                <h4><a href="#">Posted by: {{ post.author.first_name }} {{ post.author.last_name }}</a></h4>
+                                <h6><a href="{% url 'category' post.category %}">{{ post.category }}</a> - {{post.publication_date}}</h6>
+                                <p>{{ post.content|slice:":100" }}</p>
+                            </div>
+                            {% if user.is_authenticated %}
+                            <br>
+                            <br>
+                            <ul class="option-blog">
+                                <form action="{% url 'like_post' post.pk %} " method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn hvr-hover" type="submit" name="post_id" value="{{ post.id }}"><i class="fas fa-heart"></i></button>
+							 - {{ total_likes }} Likes
+                            </form>
+                                <br>
+                                <li><a href="#"><i class="fas fa-eye"></i></a></li>
+                                <li><a href="#"><i class="far fa-comments"></i></a></li>
+                                {% if user.id == post.author.id %}
+                                <li><a href=" {% url 'update_post' post.pk %} "><i class="far fa-edit"></i></a></li>
+                                <li><a href=" {% url 'delete_post' post.pk %} "><i class="fas fa-trash"></i></a></li>
+                                {% endif%}
+                            </ul>
+                            {% endif%}
+                        </div>
+                    </div>
+                </div>
+                {% endfor%}
+            </div>
+            {% if user.is_authenticated %}
+            <div class="price-box-bar">
+                <div class="cart-and-bay-btn">
+                    <a class="btn hvr-hover" data-fancybox-close="" href=" {% url 'add_post' %} ">Add Posts</a>
+                </div>
+            </div>
+            {% endif%}
+        </div>
+    </div>
+</div>
+    <!-- End Blog  -->
+
+
+
+
+    
+        {% endblock  %}
+
+

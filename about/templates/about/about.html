@@ -1,0 +1,222 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+		
+		    About | Acheampong Inc.
+		{% endblock  %}
+
+
+		{% block content%}
+
+        {% if user.is_authenticated %}
+    <!-- Start Top Search -->
+    <div class="top-search">
+        <div class="container">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <input type="text" class="form-control" placeholder="Search">
+                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+            </div>
+        </div>
+    </div>
+    <!-- End Top Search -->
+
+    <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>ABOUT US</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="breadcrumb-item active">ABOUT US</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+    <!-- Start About Page  -->
+    <div class="about-box-main">
+        <div class="container">
+            <div class="row">
+				<div class="col-lg-6">
+                    <div class="banner-frame"> <img class="img-fluid" src="images/about-img.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="noo-sh-title-top">We are <span>Liontechs Super Systems</span></h2>
+                    <p>
+                        We are a young and dynamic company that has demonstrated efficiency, pro-activeness and sincere passion for excellence in all our activities and responsibilities.
+                        We also have the pleasure to present to you a proposal to Train your students on basic computer Programs and Applications.
+                        The Courses which will be taught to the students are prepared in a way as to acknowledge their needs as we have carefully examined and exploited the computer applications in the market so as to determine the applicable as relevant to their course of study.
+                        Our Mission is to deliver a tailor-made prescription taking into consideration the desire of the students so as to add value and ensure maximum productivity.
+                        Our operations have taken into cognizance the prevailing economic situations in Nigeria and it is our desire to work within the framework of the existing laws and regulations in order to ensure a smooth relationship.
+                    </p>
+                    <p>
+                        It is in pursuant of this that we have decided to make integrity, precision and prompt delivery of services our watchword in the overall interest of our clients and our corporate image.
+                        It is our sincere hope that our foray into your school will undoubtedly herald a blissful and harmonious relationship that will be mutually productive and lasting.
+                        While we look forward to hearing from you, kindly accept the assurances of our best wishes.
+                    </p>
+                    <!--<a class="btn hvr-hover" href="#">Read More</a>-->
+                </div>
+            </div>
+            <div class="row my-5">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="service-block-inner">
+                        <h3>We are Trusted</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="service-block-inner">
+                        <h3>We are Professional</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="service-block-inner">
+                        <h3>We are Expert</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-4">
+                <div class="col-12">
+                    <h2 class="noo-sh-title">Meet Our Shareholder</h2>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="hover-team">
+                        <div class="our-team"> <img src="{% static 'website/images/Staff/JUDE.jpg'%}" alt="" />
+                            <div class="team-content">
+                                <h3 class="title">Jude Agu</h3> <span class="post">Chief Execultive Officer</span> </div>
+                            <ul class="social">
+                                <li>
+                                    <a href="#" class="fab fa-facebook"></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="fab fa-twitter"></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="fab fa-google-plus"></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="fab fa-youtube"></a>
+                                </li>
+                            </ul>
+                            <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
+                        </div>
+                        <div class="team-description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc tristique purus turpis. Maecenas vulputate. </p>
+                        </div>
+                        <hr class="my-0"> </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="hover-team">
+                        <div class="our-team"> <img src="{% static 'website/images/Staff/dan.jpg'%}" alt="" />
+                            <div class="team-content">
+                                <h3 class="title">Daniel Agu</h3> <span class="post">Manager</span> </div>
+                            <ul class="social">
+                                <li>
+                                    <a href="#" class="fab fa-facebook"></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="fab fa-twitter"></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="fab fa-google-plus"></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="fab fa-youtube"></a>
+                                </li>
+                            </ul>
+                            <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
+                        </div>
+                        <div class="team-description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc tristique purus turpis. Maecenas vulputate. </p>
+                        </div>
+                        <hr class="my-0"> </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="hover-team">
+                        <div class="our-team"> <img src="{% static 'website/images/Staff/KINGS.jpg'%}" alt="" />
+                            <div class="team-content">
+                                <h3 class="title">King-Liven K. Acheampong</h3> <span class="post">Web & Apps Developer</span> </div>
+                            <ul class="social">
+                                <li>
+                                    <a href="https://www.facebook.com/liven.acheampong.3/" class="fab fa-facebook"></a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/Ashantiking" class="fab fa-github"></a>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/in/king-liven-k-acheampong-4349a8180/" class="fab fa-google-plus"></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="fab fa-youtube"></a>
+                                </li>
+                            </ul>
+                            <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
+                        </div>
+                        <div class="team-description">
+                            <p>I am a creative professional accomplished in all aspects of my creative process: conceptualization, planning and execution. A confident and very creative designer. A motivated, hard-working, idea-driven person with a team spirit.</p>
+                        </div>
+                        <hr class="my-0"> </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="hover-team">
+                        <div class="our-team"> <img src="{% static 'website/images/Staff/REGIN.jpg'%}" alt="" />
+                            <div class="team-content">
+                                <h3 class="title">Regina Agu</h3> <span class="post">Public Relations Officer</span> </div>
+                            <ul class="social">
+                                <li>
+                                    <a href="#" class="fab fa-facebook"></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="fab fa-twitter"></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="fab fa-google-plus"></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="fab fa-youtube"></a>
+                                </li>
+                            </ul>
+                            <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
+                        </div>
+                        <div class="team-description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc tristique purus turpis. Maecenas vulputate. </p>
+                        </div>
+                        <hr class="my-0"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End About Page -->
+
+    {% else %}
+    <div class="latest-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>You are not login</h1>
+                        <p>Please Login or Register</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endif %}
+
+    
+
+
+
+    
+        {% endblock  %}
+
+

@@ -1,0 +1,174 @@
+{% extends  "base.html" %}
+
+{% load static %}
+{% block title %}
+		
+		    Categories | Acheampong Inc.
+		{% endblock  %}
+
+
+
+{% block content %}
+<!-- Start Main Top -->
+<header class="main-header">
+    <!-- Start Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+        <div class="container">
+            <!-- Start Header Navigation -->
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+                <a class="navbar-brand" href="index.html"><img src="{% static 'website/images/logo/logo2.jpg'%}" class="logo" width="60" height="auto" alt=""></a>
+            </div>
+            <!-- End Header Navigation --> 
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-menu">
+                <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                    <li class="nav-item active"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'blog' %}">Blog</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="">Sidebar Shop</a></li>
+                            <li><a href="shop-detail.html">Shop Detail</a></li>
+                            <li><a href="cart.html">Cart</a></li>
+                            <li><a href="checkout.html">Checkout</a></li>
+                            <li><a href="my-account.html">My Account</a></li>
+                            <li><a href="wishlist.html">Wishlist</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'gallery' %}">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact Us</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+
+            <!-- Start Atribute Navigation -->
+            {% if user.is_authenticated %}
+            <div class="attr-nav">
+                <ul>
+                    <li class="search"><a href=""><i class="fa fa-search"></i></a></li>
+                    <li class="side-menu">
+                        <a href="#">
+                            <i class="fa fa-shopping-bag"></i>
+                            <span class="badge">3</span>
+                            <p>My Cart</p>
+                        </a>
+                    </li>
+                    <li class="side-menu">
+                        <a href=" {% url 'logout' %} ">
+                            <i class="fas fa-sign-out-alt">Sign Out</i>
+                        </a>
+                    </li>
+            {% else %}
+            <li class="side-menu">
+                <a href=" {% url 'login' %} ">
+                    <i class="fas fa-sign-in-alt">Login</i>
+                </a>
+            </li>
+
+            {% endif %}
+            
+                    <li class="side-menu">
+                        <a href=" # ">
+                            <img src="{{ profile.photo.avatar.url }}" class="img-radius" alt="">
+                            <i class="fas fa-facebook">{{ user.first_name }}</i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+                <!-- End Atribute Navigation -->
+
+            </div>
+
+        {% if user.is_authenticated %}
+    <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Blog</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="breadcrumb-item active">Blog</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+
+
+    
+    <!-- Start Blog  -->
+    <div class="latest-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>Adding Categories</h1>
+                        <p>You can Add a Category to your Post</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                
+                <div class="col-md-12 col-lg-12 col-xl-12">
+                    
+                    <div class="blog-box">
+                        
+                        <div class="blog-content">
+                            <div class="title-blog">
+                                <form method="POST" >
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <br>
+                                    <br>
+                                    <button class="btn hvr-hover">Add Category</button>
+                                </form>
+                                <hr>
+                            </div>  
+                        </div>
+                        <div class="media-body text-center">
+                            <a class="btn hvr-hover" href="{% url 'blog' %}">Return To Blog</a>
+                        </div>
+
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- End Blog  -->
+
+    {% else %}
+    <div class="latest-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>You are not login</h1>
+                        <p>Please Login or Register</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endif %}
+
+    
+
+
+
+    
+        {% endblock  %}
+
+
