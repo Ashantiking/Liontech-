@@ -58,7 +58,9 @@ INSTALLED_APPS = [
     'about',
     'gallery',
     'contact',
-    # 'product',
+    # 'shop',
+    'product',
+    'vendor',
 
 ]
 
@@ -172,13 +174,13 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = 1
 
 
-CONTACT_EMAIL = 'contact@example.com'
-ADMIN_EMAILS = ['admin@example.com', ]
+CONTACT_EMAIL = 'liontechcomputer@gmail.com'
+ADMIN_EMAILS = ['livenkacheampong@gmail.com']
 
 
 # Twilio SendGrid
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_USER = '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'
 EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')

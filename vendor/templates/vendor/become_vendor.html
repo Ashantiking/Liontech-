@@ -1,53 +1,12 @@
-{% extends  "base.html" %}
-
+{% extends 'base.html' %}
 {% load static %}
 {% block title %}
 		
-		    Categories | Acheampong Inc.
+Vendor | Acheampong Inc.
 		{% endblock  %}
 
 
-
-{% block content %}
-            <!-- /.navbar-collapse -->
-
-            <!-- Start Atribute Navigation -->
-            {% if user.is_authenticated %}
-            <div class="attr-nav">
-                <ul>
-                    <li class="search"><a href=""><i class="fa fa-search"></i></a></li>
-                    <li class="side-menu">
-                        <a href="#">
-                            <i class="fa fa-shopping-bag"></i>
-                            <span class="badge">3</span>
-                            <p>My Cart</p>
-                        </a>
-                    </li>
-                    <li class="side-menu">
-                        <a href=" {% url 'logout' %} ">
-                            <i class="fas fa-sign-out-alt">Sign Out</i>
-                        </a>
-                    </li>
-            {% else %}
-            <li class="side-menu">
-                <a href=" {% url 'login' %} ">
-                    <i class="fas fa-sign-in-alt">Login</i>
-                </a>
-            </li>
-
-            {% endif %}
-            
-                    <li class="side-menu">
-                        <a href=" # ">
-                            <img src="{{ profile.photo.avatar.url }}" class="img-radius" alt="">
-                            <i class="fas fa-facebook">{{ user.first_name }}</i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-                <!-- End Atribute Navigation -->
-
-            </div>
+		{% block content%}
 
         {% if user.is_authenticated %}
     <!-- Start All Title Box -->
@@ -55,10 +14,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2>Blog</h2>
+                    <h2>Vendor</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
-                        <li class="breadcrumb-item active">Blog</li>
+                        <li class="breadcrumb-item"><a href="{% url 'vendor' %}">Vendor</a></li>
+                        <li class="breadcrumb-item active">Add A Vendor</li>
                     </ul>
                 </div>
             </div>
@@ -75,8 +34,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="title-all text-center">
-                        <h1>Adding Categories</h1>
-                        <p>You can Add a Category to your Post</p>
+                        <h1>Adding Vendor</h1>
+                        <p>You can Add a Vendor</p>
                     </div>
                 </div>
             </div>
@@ -94,15 +53,19 @@
                                     {{ form.as_p }}
                                     <br>
                                     <br>
-                                    <button class="btn hvr-hover">Add Category</button>
+                                    <button class="btn hvr-hover">Add Vendor</button>
                                 </form>
                                 <hr>
-                            </div>  
+                            </div>
+                            <script>
+                                var name = "{{ user.id }} ";
+                                document.getElementById("light").value = name;
+                            </script> 
                         </div>
                         <div class="media-body text-center">
-                            <a class="btn hvr-hover" href="{% url 'blog' %}">Return To Blog</a>
+                            <a class="btn hvr-hover" href="{% url 'vendor' %}">Return To Vendor</a>
                         </div>
-
+                    </div> 
                         <br>
                         <br>
                     </div>

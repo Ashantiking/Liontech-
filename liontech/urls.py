@@ -21,7 +21,7 @@ from contact import views as contact_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('accounts/', include('allauth.urls')),
+    #path('accounts/', include('allauth.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
     path('', include('website.urls')),
@@ -29,7 +29,7 @@ urlpatterns = [
     path('about/', include('about.urls')),
     path('gallery/', include('gallery.urls')),
     path('contact/', contact_views.contact_view, name='contact'),
-    #path('product/', include('product.urls')),
-    #path('product/', include('product.urls', namespace='product'))
+    path('vendor/', include('vendor.urls')),
+    path('product/', include('product.urls'))
 
 ]
