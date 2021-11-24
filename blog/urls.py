@@ -1,6 +1,6 @@
 from django.urls import path
 from django.views.generic.edit import UpdateView
-from .views import AddPostView, BlogView, ArticleDetailView,  AddPostView, UpdatePostView, DeletePostView, AddCategoryView, CategoryView, LikeView
+from .views import AddPostView, BlogView, ArticleDetailView,  AddPostView, UpdatePostView, LikeView, DeletePostView, AddCategoryView, CategoryView
 
 urlpatterns = [
     path('', BlogView.as_view(), name='blog'),

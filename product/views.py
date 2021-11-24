@@ -1,57 +1,74 @@
+from __future__ import unicode_literals
+
+from django.db import models
 from django.shortcuts import render, get_object_or_404
 from django.urls.base import reverse, reverse_lazy
+from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Product  # , Categorie
+from django.utils import timezone
+#from shopping_cart.models import Order
+from .models import Product, OrderProduct, Order
+#from category.models import Category
 from .forms import ProductForm, EditForm
-from django.http import HttpResponseRedirect
 # Create your views here.
 
 
-def LikeView(request, pk):
-    product = get_object_or_404(Product, id=request.POST.get('product_pk'))
-    product.like.add(request.user)
-    return HttpResponseRedirect(reverse('product-detail', args=[str(pk)]))
+# def product_list(request):
+#    object_list = Product.objects.all()
+#    filtered_orders = Order.objects.filter(owner=request.user.profile, is_ordered)
+#    current_order_products = []
+#    if filtered_orders.exists():
+#        user_order = filtered_orders[0]
+#        user_order_items = user_order.all()
+#        current_order_products = [product.product for product in product user_order_items]
 
+#    context = {
+#        'object_list': object_list,
+#        'current_order_products': current_order_products
+#    }
+#    return render(request, "products/pro", context)
 
 class ProductView(ListView):
     model = Product
-    template_name = 'products/product.html'
+    template_name = 'product/product.html'
     ordering = ['-date_added']
-
-
-def Categorie(request, cat):
-    categorie_product = Product.objects.filter(categorie=cats)
-    return render(request, 'categories.html', {'cats': cats.title(), 'categorie_product': categorie_product})
 
 
 class ProductDetailView(DetailView):
     model = Product
     template_name = 'product/product_detail.html'
-    success_url = reverse_lazy('product')
-
-    def get_context_data(self, *args, **kwargs):
-        cat_menu = Categorie.objects.all()
-        context = super(ProductDetailView, self).get_context_data()
-
-        stuff = get_object_or_404(Product, id=self.kwargs['pk'])
-        total_likes = stuff.total_likes()
-        context["cat_menu"] = cat_menu
-        context["total_likes"] = total_likes
-        return context
 
 
-class AddProductView(CreateView):
+def add_to_cart(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    order_product = OrderProduct.objects.create(product=product)
+    order_qs = Order.objects.filter(user=request.user, ordered=False)
+    if order_qs.exists():
+        order = order_qs[0]
+# check if the order item is in the order
+        if order.product.filter(product__pk=product.pk).exists():
+            order_product.quantity += 1
+            order_product.save()
+
+        else:
+            order_date = timezone.now()
+            order = Order.objects.create(
+                user=request.user, ordered_date=order_date)
+            order.product.add(order_product)
+        return redirect("product", kwargs={int: pk})
+
+
+class NewProductView(CreateView):
     model = Product
     form_class = ProductForm
-    template_name = 'product/add_product.html'
-    success_url = reverse_lazy('product')
+    template_name = 'product/new_product.html'
 
 
-# class AddCategorieView(CreateView):
-#    model = Categorie
+# class AddCategoryView(CreateView):
+    #model = Category
     #form_class = ProductForm
-#    template_name = 'add_category.html'
-#    fields = '__all__'
+    #template_name = 'add_category.html'
+    #fields = '__all__'
 
 
 class UpdateProductView(UpdateView):
@@ -61,7 +78,12 @@ class UpdateProductView(UpdateView):
     success_url = reverse_lazy('product')
 
 
-class DeleteProductView(DeleteView):
+class UpdateAddToCartView(UpdateView):
     model = Product
-    template_name = 'product/delete_product.html'
+    form_class = EditForm
+    template_name = 'product/update_product.html'
     success_url = reverse_lazy('product')
+
+
+def wishlist(request):
+    return render(request, 'product/wishlist.html', {})
