@@ -50,6 +50,7 @@
                             <div class="title-blog">
                                 <form method="POST" >
                                     {% csrf_token %}
+                                    {{ form.media }}
                                     {{ form.as_p }}
                                     <br>
                                     <br>
@@ -63,7 +64,7 @@
                             </script> 
                         </div>
                         <div class="media-body ">
-                            <a class="btn hvr-hover" href="{% url 'add_category' %}">Add Categories</a>
+                            <a class="btn hvr-hover" href="">Add Categories</a>
                        
                         <div class="media-body text-center">
                             <a class="btn hvr-hover" href="{% url 'blog' %}">Return To Blog</a>

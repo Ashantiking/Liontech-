@@ -3,18 +3,18 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from datetime import datetime, date
+from ckeditor.fields import RichTextField
 
 # Create your models here
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=255)
+# class Category(models.Model):
+#    name = models.CharField(max_length=255)
 
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse('blog')
+#    def __str__(self):
+#        return self.name
+#    def get_absolute_url(self):
+#        return reverse('blog')
 
 
 class Post(models.Model):
@@ -23,7 +23,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
     publication_date = models.DateField(auto_now_add=True)
-    category = models.CharField(max_length=255)
+    #category = models.CharField(max_length=255)
     likes = models.ManyToManyField(User, related_name='blog_posts')
 
     def total_likes(self):

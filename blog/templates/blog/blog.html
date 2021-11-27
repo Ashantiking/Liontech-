@@ -53,8 +53,8 @@
                                 <h3><a href="{% url 'article-detail' post.pk %} ">{{ post.title }}</a></h3>
                                 
                                 <h4><a href="#">Posted by: {{ post.author.first_name }} {{ post.author.last_name }}</a></h4>
-                                <h6><a href="{% url 'category' post.category %}">{{ post.category }}</a> - {{post.publication_date}}</h6>
-                                <p>{{ post.content|slice:":100" }}</p>
+                                <h6><a href=""> post.category </a> - {{post.publication_date}}</h6>
+                                <p>{{ post.content|slice:":100"}}</p>
                             </div>
                             {% if user.is_authenticated %}
                             <br>

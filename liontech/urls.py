@@ -30,6 +30,8 @@ urlpatterns = [
     path('gallery/', include('gallery.urls')),
     path('contact/', contact_views.contact_view, name='contact'),
     path('vendor/', include('vendor.urls')),
-    path('product/', include('product.urls'))
+    path('product/', include('product.urls')),
+    #path('category', include('category.urls')),
+
 
 ]

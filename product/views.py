@@ -32,6 +32,7 @@ class ProductView(ListView):
     model = Product
     template_name = 'product/product.html'
     ordering = ['-date_added']
+    success_url = reverse_lazy('product')
 
 
 class ProductDetailView(DetailView):
@@ -62,7 +63,7 @@ class NewProductView(CreateView):
     model = Product
     form_class = ProductForm
     template_name = 'product/new_product.html'
-
+    success_url = reverse_lazy('product')
 
 # class AddCategoryView(CreateView):
     #model = Category

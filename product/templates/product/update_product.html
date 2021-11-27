@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+		
+Products|  Acheampong Inc.
+		{% endblock  %}
+
+
+		{% block content%}
+        {% if user.is_authenticated %}
+        {% if user.id == product.author.id %}
+    <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Products</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'blog' %}">Products</a></li>
+                        <li class="breadcrumb-item active">Update Products</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+
+
+    
+    <!-- Start Blog  -->
+    <div class="latest-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>Updates Products</h1>
+                        <p>You can Add a Updates Products</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                
+                <div class="col-md-12 col-lg-12 col-xl-12">
+                    
+                    <div class="blog-box">
+                        
+                        <div class="blog-content">
+                            <div class="title-blog">
+                                <form method="POST" >
+                                    {% csrf_token %}
+                                    {{ form.media }}
+                                    {{ form.as_p }}
+                                    <br>
+                                    <br>
+                                    <button class="btn hvr-hover">Update Products</button>
+                                </form>
+                                <hr>
+                                <div class="media-body text-center">
+                                    <a class="btn hvr-hover" href="{% url 'products' %}"><strong>Return To Products</strong> </a>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="latest-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>You do not have permission for this</h1>
+                    <div class="price-box-bar">
+                        <div class="cart-and-bay-btn">
+                            <a class="btn hvr-hover" data-fancybox-close="" href=" {% url 'blog' %} ">Please Return to Blog</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% else %}
+<div class="latest-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>You are not login</h1>
+                    <p>Please Login or Register</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+    <!-- End Blog  -->
+
+
+
+
+    
+
+
+
+    
+        {% endblock  %}
+
+

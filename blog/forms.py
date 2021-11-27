@@ -5,6 +5,7 @@ from .models import Post  # , Category
 
 #choice_list = []
 
+
 # for item in choices:
 #    choice_list.append(item)
 
