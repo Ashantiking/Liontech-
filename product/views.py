@@ -41,6 +41,17 @@ class ProductView(ListView):
 class ProductDetailView(DetailView):
     model = Product
     template_name = 'product/product_detail.html'
+    success_url = reverse_lazy('product')
+
+    def get_context_data(self, *args, **kwargs):
+        #        cat_menu = Category.objects.all()
+        context = super(ProductDetailView, self).get_context_data()
+
+        #stuff = get_object_or_404(Product, id=self.kwargs['pk'])
+        #total_likes = stuff.total_likes()
+        #context["cat_menu"] = cat_menu
+        #context["total_likes"] = total_likes
+        return context
 
 
 def add_to_cart(request, pk):

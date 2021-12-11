@@ -1,6 +1,7 @@
 
 #from django.Acheamponginc import File
 from django.conf import settings
+from django.contrib.auth.models import User
 from django.db import models
 from django.shortcuts import reverse
 #from blog.models import Category
@@ -23,6 +24,10 @@ class Product(models.Model):
     sold = models.IntegerField()
     date_added = models.DateField(auto_now_add=True)
     discription = models.TextField()
+    likes = models.ManyToManyField(User, related_name='product_posts')
+
+    def total_likes(self):
+        return self.likes.count()
 
     class Meta:
         ordering = ['date_added']
